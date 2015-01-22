@@ -1,3 +1,5 @@
+<%@ page import="java.util.List" %>
+<%@ page import="java.util.ArrayList" %>
 <%--
   Created by IntelliJ IDEA.
   User: vincent
@@ -39,126 +41,108 @@
         <h3><i class="icon-cogs"></i>&nbsp;计算参数设置</h3>
     </div>
     <div class="modal-body form">
+        <%
+            List<String> list = new ArrayList<String>();
+            list.add("采购分布");
+            list.add("租入分布");
+            list.add("分入分布");
+            list.add("销售分布");
+            list.add("租出分布");
+            list.add("分出分布");
+            request.setAttribute("distributionNameList",list);
+
+        %>
+        <c:forEach items="${distributionNameList}" var="distributionName" varStatus="i">
         <div class="row-fluid">
             <div class="span12">
                 <div class="control-group">
-                    <label class="control-label" for="purchasingCycle">采购周期分布</label>
+                    <label class="control-label" for="purchasingCycle${i.index+1}">${distributionName}</label>
                     <div class="controls">
-                        <select id="purchasingCycle" class="m-wrap span12">
-                            <option value="1">正态分布</option>
-                            <option value="2">泊松分布</option>
-                            <option value="3">三角分布</option>
-                            <option value="4">自定义...</option>
-                        </select>
-                        <script type="text/javascript">
-                            $("#purchasingCycle").on("change", function(){
-                                var selectedValue = "";
-                                $("#purchasingCycle option:selected").each(function () {
-                                    selectedValue = $(this).val();
-                                });
-
-                                for (var i = 1; i <= 4; i++) {
-                                    if(i == selectedValue) {
-                                        $("#purchasingCycleContent" + i).show();
-                                    }else {
-                                        $("#purchasingCycleContent" + i).hide();
+                            <label class="radio">
+                                <input type="radio" onclick="timeLimitClick${i.index+1}(1)" name="serviceLevel${i.index+1}" value="1"  />
+                                一年期
+                            </label>
+                            <label class="radio">
+                                <input type="radio" onclick="timeLimitClick${i.index+1}(2)" name="serviceLevel${i.index+1}" value="2"  />
+                                两年期
+                            </label>
+                            <label class="radio">
+                                <input type="radio" onclick="timeLimitClick${i.index+1}(3)" name="serviceLevel${i.index+1}" value="3" />
+                                三年期
+                            </label>
+                            <script>
+                                function timeLimitClick${i.index+1}(v) {
+                                    var html;
+                                    for (i=0;i<v*12;i++){
+                                        var date = new Date();
+                                        date.setMonth(i);
+                                        html += "<tr><td>" + date.getFullYear() + "-" + (date.getMonth()+1) + "</td><td><input type='text' /></td></tr>";
                                     }
+                                    $('#tb${i.index+1}').html(html);
                                 }
-                            });
-                        </script>
+                            </script>
+                            <br />
+                            <select id="purchasingCycle${i.index+1}" class="m-wrap span12">
+                                <option value="1">正态分布</option>
+                                <option value="2">泊松分布</option>
+                                <option value="3">三角分布</option>
+                                <option value="4">自定义...</option>
+                            </select>
+                            <script type="text/javascript">
+                                $("#purchasingCycle${i.index+1}").on("change", function(){
+                                    var selectedValue = "";
+                                    $("#purchasingCycle${i.index+1} option:selected").each(function () {
+                                        selectedValue = $(this).val();
+                                    });
 
-                        <div class="row-fluid" id="purchasingCycleContent1">
+                                    for (var i = 1; i <= 4; i++) {
+                                        if(i == selectedValue) {
+                                            $("#purchasingCycleContent${i.index+1}" + i).show();
+                                        }else {
+                                            $("#purchasingCycleContent${i.index+1}" + i).hide();
+                                        }
+                                    }
+                                });
+                            </script>
+                        <div class="row-fluid" id="purchasingCycleContent${i.index+1}1">
                             <input type="text" class="m-wrap span6 text-right" placeholder="均值">
                             <input type="text" class="m-wrap span6 text-right" placeholder="标准差">
                         </div>
-                        <div class="row-fluid" id="purchasingCycleContent2" style="display: none;">
+                        <div class="row-fluid" id="purchasingCycleContent${i.index+1}2" style="display: none;">
                             <input type="text" class="m-wrap span6 text-right" placeholder="lambda">
                         </div>
-                        <div class="row-fluid" id="purchasingCycleContent3" style="display: none;">
+                        <div class="row-fluid" id="purchasingCycleContent${i.index+1}3" style="display: none;">
                             <input type="text" class="m-wrap span6 text-right" placeholder="最小值">
                             <input type="text" class="m-wrap span6 text-right" placeholder="最可能值">
                             <input type="text" class="m-wrap span6 text-right" placeholder="最大值">
                         </div>
-                        <div class="row-fluid" id="purchasingCycleContent4" style="display: none;">
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="input-append">
-                                    <div class="uneditable-input">
-                                        <i class="icon-file fileupload-exists"></i>
-                                        <span class="fileupload-preview"></span>
+                        <div class="row-fluid" id="purchasingCycleContent${i.index+1}4" style="display: none;">
+                            <div class="portlet box blue">
+                                <div class="portlet-title">
+                                    <div class="caption"><i class="icon-cogs"></i>出入库数量分布</div>
+                                    <div class="tools">
+                                        <a href="javascript:;" class="collapse"></a>
                                     </div>
-                                    <span class="btn btn-file">
-                                    <span class="fileupload-new">选择文件</span>
-                                    <span class="fileupload-exists">修改</span>
-                                        <input type="file" class="default"/>
-                                    </span>
-                                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">删除</a>
                                 </div>
-                            </div>
+                                <div class="portlet-body">
+                            <table class="table flip-content">
+                                <tr>
+                                    <th>月份</th>
+                                    <th>数量</th>
+                                </tr>
+                                <tbody id="tb${i.index+1}">
+
+                                </tbody>
+                            </table>
+                                    </div>
+                                </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        <div class="row-fluid">
-            <div class="span12">
-                <div class="control-group">
-                    <label class="control-label" for="warehousingDistribution">出库分布</label>
-                    <div class="controls">
-                        <select id="warehousingDistribution" class="m-wrap span12">
-                            <option value="1">正态分布</option>
-                            <option value="2">泊松分布</option>
-                            <option value="3">三角分布</option>
-                            <option value="4">自定义...</option>
-                        </select>
-                        <script type="text/javascript">
-                            $("#warehousingDistribution").on("change", function(){
-                                var selectedValue = "";
-                                $("#warehousingDistribution option:selected").each(function () {
-                                    selectedValue = $(this).val();
-                                });
-
-                                for (var i = 1; i <= 4; i++) {
-                                    if(i == selectedValue) {
-                                        $("#warehousingDistributionContent" + i).show();
-                                    }else {
-                                        $("#warehousingDistributionContent" + i).hide();
-                                    }
-                                }
-                            });
-                        </script>
-
-                        <div class="row-fluid" id="warehousingDistributionContent1">
-                            <input type="text" class="m-wrap span6 text-right" placeholder="均值">
-                            <input type="text" class="m-wrap span6 text-right" placeholder="标准差">
-                        </div>
-                        <div class="row-fluid" id="warehousingDistributionContent2" style="display: none;">
-                            <input type="text" class="m-wrap span6 text-right" placeholder="lambda">
-                        </div>
-                        <div class="row-fluid" id="warehousingDistributionContent3" style="display: none;">
-                            <input type="text" class="m-wrap span6 text-right" placeholder="最小值">
-                            <input type="text" class="m-wrap span6 text-right" placeholder="最可能值">
-                            <input type="text" class="m-wrap span6 text-right" placeholder="最大值">
-                        </div>
-                        <div class="row-fluid" id="warehousingDistributionContent4" style="display: none;">
-                            <div class="fileupload fileupload-new" data-provides="fileupload">
-                                <div class="input-append">
-                                    <div class="uneditable-input">
-                                        <i class="icon-file fileupload-exists"></i>
-                                        <span class="fileupload-preview"></span>
-                                    </div>
-                                    <span class="btn btn-file">
-                                    <span class="fileupload-new">选择文件</span>
-                                    <span class="fileupload-exists">修改</span>
-                                        <input type="file" class="default"/>
-                                    </span>
-                                    <a href="#" class="btn fileupload-exists" data-dismiss="fileupload">删除</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+        </c:forEach>
         <div class="row-fluid">
             <div class="span6">
                 <div class="control-group warning">
@@ -211,19 +195,25 @@
                     <tr>
                         <th rowspan="2" style="vertical-align: middle;text-align: center;">资产编号</th>
                         <th rowspan="2" style="vertical-align: middle;text-align: center;">资产名称</th>
-                        <th colspan="4">现有库存量</th>
-                        <th colspan="4">库存成本</th>
-                        <th rowspan="2" style="vertical-align: middle;text-align: center;">操作</th>
+                        <th colspan="4">库存占有量</th>
+                        <th colspan="4">库存占有成本(当年)</th>
+                        <th colspan="4">库存占有成本(累计)</th>
+                        <th rowspan="2" style="vertical-align: middle;text-align: center;">保障水平</th>
+                        <th rowspan="2" style="vertical-align: middle;text-align: center;"></th>
                     </tr>
                     <tr>
                         <th style="text-align: center;">购销</th>
                         <th style="text-align: center;">租赁</th>
-                        <th style="text-align: center;">共享</th>
+                        <th style="text-align: center;">分享</th>
                         <th style="text-align: center;">合计</th>
-                        <th style="text-align: center;">采购费用</th>
-                        <th style="text-align: center;">租赁费用</th>
-                        <th style="text-align: center;">分享费用</th>
-                        <th style="text-align: center;">合计</th>
+                        <th style="text-align: center;">购销</th>
+                        <th style="text-align: center;">租赁</th>
+                        <th style="text-align: center;">分享</th>
+                        <th style="text-align: center;">当年合计</th>
+                        <th style="text-align: center;">购销</th>
+                        <th style="text-align: center;">租赁</th>
+                        <th style="text-align: center;">分享</th>
+                        <th style="text-align: center;">累计合计</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -239,16 +229,21 @@
                             <td style="text-align: right;"><a href="${ctx}/cost/detail/${asset.id}/2"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.leaseCost}" ></fmt:formatNumber></a></td>
                             <td style="text-align: right;"><a href="${ctx}/cost/detail/${asset.id}/3"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.shareCost}" ></fmt:formatNumber></a></td>
                             <td style="text-align: right;"><span class="label label-success"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.purchaseCost + asset.leaseCost + asset.shareCost}" ></fmt:formatNumber></span></td>
+                            <td style="text-align: right;"><a href="${ctx}/cost/detail/${asset.id}/1"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.purchaseCost}" ></fmt:formatNumber></a></td>
+                            <td style="text-align: right;"><a href="${ctx}/cost/detail/${asset.id}/2"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.leaseCost}" ></fmt:formatNumber></a></td>
+                            <td style="text-align: right;"><a href="${ctx}/cost/detail/${asset.id}/3"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.shareCost}" ></fmt:formatNumber></a></td>
+                            <td style="text-align: right;"><span class="label label-success"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.purchaseCost + asset.leaseCost + asset.shareCost}" ></fmt:formatNumber></span></td>
                             <td style="text-align: right;">
-                                <a href="javascript:;" onclick="settings('${asset.id}')" class="btn mini red-stripe">参数设置</a>
+                                <a href="javascript:;" onclick="settings('${asset.id}')">99.95%</a>
                                 <script type="text/javascript">
                                     function settings(assetsId){
                                         $("#assetsId").attr("value",assetsId);
                                         $("#parameterSettingModal").modal("show");
                                     }
                                 </script>
-                                &nbsp;
-                                <a href="${ctx}/securitylevel/result/${asset.id}" class="btn mini blue-stripe">计算</a>
+                            </td>
+                            <td style="text-align: right;">
+                                <a href="${ctx}/securitylevel/result/${asset.id}" class="btn mini icn-only"><i class="icon-bar-chart"></i></a>
                             </td>
                         </tr>
                     </c:forEach>

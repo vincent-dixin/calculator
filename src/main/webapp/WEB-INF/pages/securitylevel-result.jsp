@@ -7,6 +7,9 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<c:set var="ctx" value="${pageContext.request.contextPath}"/>
 <html>
 <head>
     <title>汽轮机主齿轮 (1100002047)</title>
@@ -39,7 +42,7 @@
                 <script type="text/javascript">
                     $(function () {
                         var datas1 = new Array();
-                        for (var i = 80; i >= 1; i--) {
+                        for (var i = 120; i >= 1; i--) {
                             datas1.push(Math.round(Math.random()*100));
                         }
                         var barchart = new Highcharts.Chart({
@@ -51,14 +54,15 @@
                                 text: false
                             },
                             xAxis: {
-                                type: 'category',
+                                //
+                                categories:${returnDataCategories},
+                                tickInterval: 6,
                                 reversed: false,
                                 labels: {
                                     style:{ "color": "#6D869F","fontWeight":"bold", "fontSize": "3px" }
                                 }
                             },
                             yAxis: {
-                                min: 0,
                                 title: {
                                     text: ''
                                 },
@@ -71,7 +75,7 @@
                             },
                             series: [{
                                 name: 'Population',
-                                data: datas1
+                                data: ${returnDataValue}
                             }]
                         });
                         $('#container1').highcharts({
@@ -82,8 +86,7 @@
                                         text: false
                                     },
                                     xAxis: [{
-                                        categories: ['2013-1', '2013-2', '2013-3', '2013-4', '2013-5', '2013-6',
-                                            '2013-7', '2013-8', '2013-9', '2013-10', '2013-11', '2013-12']
+
                                     }],
                                     yAxis: [{ // Primary yAxis
                                         labels: {
@@ -107,7 +110,6 @@
                                             }
                                         },
                                         min: 0,
-                                        max:30,
                                         plotLines: [{   //一条延伸到整个绘图区的线，标志着轴中一个特定值。
                                             color: 'rgb(224,34,34)',
                                             dashStyle: 'Dash', //Dash,Dot,Solid,默认Solid
@@ -115,7 +117,7 @@
                                                 text:'上限'
                                             },
                                             width: 1.5,
-                                            value: 7,  //y轴显示位置
+                                            value: 204,  //y轴显示位置
                                             zIndex: 5
                                         },{   //一条延伸到整个绘图区的线，标志着轴中一个特定值。
                                             color: 'rgb(224,34,34)',
@@ -124,43 +126,39 @@
                                                 text:'下限'
                                             },
                                             width: 1.5,
-                                            value: 5,  //y轴显示位置
+                                            value: 49,  //y轴显示位置
                                             zIndex: 5
                                         }],
                                         opposite: true
                                     }],
                                     tooltip: {
+                                        crosshairs: true,
                                         shared: true
                                     },
                                     plotOptions: {
                                         spline: {
-                                            dataLabels: {
-                                                format: '{y}%',
-                                                enabled: true
-                                            },
                                             point: {
                                                 events: {
                                                     click: function (event) {
-                                                        var datas = new Array();
-                                                        for (var i = 80; i >= 1; i--) {
-                                                            datas.push(Math.round(Math.random()*100));
-                                                        }
-                                                        barchart.series[0].setData(datas);
-                                                        barchart.setTitle(this.category,"",true);
-//                                                        var e=event?event:window.event;
-//                                                        var t=e.target||e.srcElement;
-//                                                        $("#barchart").show();
-//                                                        $("#barchart").animate({
-//                                                            left:t.plotX+'px',
-//                                                            top:t.plotY+'px'
-//                                                        }, 'slow','swing');
+//                                                        var datas = new Array();
+//                                                        for (var i = 120; i >= 1; i--) {
+//                                                            datas.push(Math.round(Math.random()*100));
+//                                                        }
+                                                        $.ajax({
+                                                            url:'${ctx}/securitylevel/sheet2/1/' + this.category,
+                                                            success:function(data){
+                                                                var datas = new Array();
+                                                                var arr = data.split(',');
+                                                                for(i in arr){
+                                                                    datas.push(parseInt(arr[i]));
+                                                                }
+                                                                barchart.series[0].setData(datas);
+                                                            }
+                                                        });
+
+
                                                     }
                                                 }
-                                            }
-                                        },
-                                        area: {
-                                            dataLabels: {
-                                                enabled: true
                                             }
                                         }
                                     },
@@ -168,12 +166,26 @@
                                         name: '库存量',
                                         type: 'area',
                                         yAxis: 1,
-                                        data: [0, 1, 4, 4, 5, 2, 3, 7, 6, 3, 2, 4]
+                                        data: [
+                                            <c:forEach items="${sheet1List}" var="sheet1" varStatus="i">
+                                            [${sheet1.id},${sheet1.c}]
+                                            <c:if test="${!i.last}">
+                                            ,
+                                            </c:if>
+                                            </c:forEach>
+                                        ]
 
                                     }, {
                                         name: '保障水平',
                                         type: 'spline',
-                                        data: [95.1, 96.3, 97.7, 96.2, 94.9, 98.2, 99.9, 99.8, 99.9, 99.3, 99.2, 98.5]
+                                        data: [
+                                            <c:forEach items="${sheet1List}" var="sheet1" varStatus="i">
+                                            [${sheet1.id},${sheet1.e}]
+                                            <c:if test="${!i.last}">
+                                            ,
+                                            </c:if>
+                                            </c:forEach>
+                                        ]
                                     }]
                                 }
                         );
@@ -326,6 +338,7 @@
                                     enabled: true,
                                     text: '库存量（个)'
                                 },
+                                min: 0,
                                 plotLines: [{   //一条延伸到整个绘图区的线，标志着轴中一个特定值。
                                     color: 'rgb(224,34,34)',
                                     dashStyle: 'Dash', //Dash,Dot,Solid,默认Solid
@@ -333,7 +346,7 @@
                                         text:'上限'
                                     },
                                     width: 1.5,
-                                    value: 65,  //y轴显示位置
+                                    value: 204,  //y轴显示位置
                                     zIndex: 5
                                 },{   //一条延伸到整个绘图区的线，标志着轴中一个特定值。
                                     color: 'rgb(224,34,34)',
@@ -342,7 +355,7 @@
                                         text:'下限'
                                     },
                                     width: 1.5,
-                                    value: 30,  //y轴显示位置
+                                    value: 49,  //y轴显示位置
                                     zIndex: 5
                                 }],
                                 startOnTick: true,
@@ -397,9 +410,14 @@
                             series: [{
                                 name: 'Male',
                                 color: 'rgba(119, 152, 191, .5)',
-                                data: [[29.00, 50],[33.00, 55],[36.00, 60],[39.00, 65],
-                                    [42.00, 70],[45.00, 75],[48.00, 80],[50.00, 85],
-                                    [52.00, 90],[62.00, 95],[77.03, 99]]
+                                data: [
+                                    <c:forEach items="${sheet1List}" var="sheet1" varStatus="i">
+                                    [${sheet1.c}, ${sheet1.e}]
+                                    <c:if test="${!i.last}">
+                                    ,
+                                    </c:if>
+                                    </c:forEach>
+                                ]
                             }]
                         });
                     });
