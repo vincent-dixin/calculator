@@ -71,9 +71,9 @@ public class CalculatorControl {
         if("1".equals(tradeType)){
             returnData = "buy-sale-cost-detail";
         } else if("2".equals(tradeType)){
-            returnData = "buy-sale-cost-detail";
+            returnData = "lease-cost-detail";
         } else {
-            returnData = "buy-sale-cost-detail";
+            returnData = "share-cost-detail";
         }
         model.addAttribute("contractDetailList",assetsService.contractDetailList(assetsId,tradeType));
         return returnData;
