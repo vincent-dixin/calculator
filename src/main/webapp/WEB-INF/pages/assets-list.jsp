@@ -53,11 +53,11 @@
 
         %>
         <c:forEach items="${distributionNameList}" var="distributionName" varStatus="i">
-        <div class="row-fluid">
-            <div class="span12">
-                <div class="control-group">
-                    <label class="control-label" for="purchasingCycle${i.index+1}">${distributionName}</label>
-                    <div class="controls">
+            <div class="row-fluid">
+                <div class="span12">
+                    <div class="control-group">
+                        <label class="control-label" for="purchasingCycle${i.index+1}">${distributionName}</label>
+                        <div class="controls">
                             <label class="radio">
                                 <input type="radio" onclick="timeLimitClick${i.index+1}(1)" name="serviceLevel${i.index+1}" value="1"  />
                                 一年期
@@ -104,44 +104,44 @@
                                     }
                                 });
                             </script>
-                        <div class="row-fluid" id="purchasingCycleContent${i.index+1}1">
-                            <input type="text" class="m-wrap span6 text-right" placeholder="均值">
-                            <input type="text" class="m-wrap span6 text-right" placeholder="标准差">
-                        </div>
-                        <div class="row-fluid" id="purchasingCycleContent${i.index+1}2" style="display: none;">
-                            <input type="text" class="m-wrap span6 text-right" placeholder="lambda">
-                        </div>
-                        <div class="row-fluid" id="purchasingCycleContent${i.index+1}3" style="display: none;">
-                            <input type="text" class="m-wrap span6 text-right" placeholder="最小值">
-                            <input type="text" class="m-wrap span6 text-right" placeholder="最可能值">
-                            <input type="text" class="m-wrap span6 text-right" placeholder="最大值">
-                        </div>
-                        <div class="row-fluid" id="purchasingCycleContent${i.index+1}4" style="display: none;">
-                            <div class="portlet box blue">
-                                <div class="portlet-title">
-                                    <div class="caption"><i class="icon-cogs"></i>出入库数量分布</div>
-                                    <div class="tools">
-                                        <a href="javascript:;" class="collapse"></a>
+                            <div class="row-fluid" id="purchasingCycleContent${i.index+1}1">
+                                <input type="text" class="m-wrap span6 text-right" placeholder="均值">
+                                <input type="text" class="m-wrap span6 text-right" placeholder="标准差">
+                            </div>
+                            <div class="row-fluid" id="purchasingCycleContent${i.index+1}2" style="display: none;">
+                                <input type="text" class="m-wrap span6 text-right" placeholder="lambda">
+                            </div>
+                            <div class="row-fluid" id="purchasingCycleContent${i.index+1}3" style="display: none;">
+                                <input type="text" class="m-wrap span6 text-right" placeholder="最小值">
+                                <input type="text" class="m-wrap span6 text-right" placeholder="最可能值">
+                                <input type="text" class="m-wrap span6 text-right" placeholder="最大值">
+                            </div>
+                            <div class="row-fluid" id="purchasingCycleContent${i.index+1}4" style="display: none;">
+                                <div class="portlet box blue">
+                                    <div class="portlet-title">
+                                        <div class="caption"><i class="icon-cogs"></i>出入库数量分布</div>
+                                        <div class="tools">
+                                            <a href="javascript:;" class="collapse"></a>
+                                        </div>
+                                    </div>
+                                    <div class="portlet-body">
+                                        <table class="table flip-content">
+                                            <tr>
+                                                <th>月份</th>
+                                                <th>数量</th>
+                                            </tr>
+                                            <tbody id="tb${i.index+1}">
+
+                                            </tbody>
+                                        </table>
                                     </div>
                                 </div>
-                                <div class="portlet-body">
-                            <table class="table flip-content">
-                                <tr>
-                                    <th>月份</th>
-                                    <th>数量</th>
-                                </tr>
-                                <tbody id="tb${i.index+1}">
 
-                                </tbody>
-                            </table>
-                                    </div>
-                                </div>
-
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         </c:forEach>
         <div class="row-fluid">
             <div class="span6">
@@ -184,7 +184,7 @@
         <!-- BEGIN SAMPLE TABLE PORTLET-->
         <div class="portlet box red">
             <div class="portlet-title">
-                <div class="caption"><i class="icon-cogs"></i>资产库存汇总</div>
+                <div class="caption"><i class="icon-cogs"></i>资产汇总</div>
                 <div class="tools">
                     <a href="javascript:;" class="collapse"></a>
                 </div>
@@ -193,47 +193,28 @@
                 <table class="table table-hover table-condensed flip-content">
                     <thead class="flip-content">
                     <tr>
-                        <th rowspan="2" style="vertical-align: middle;text-align: center;">资产编号</th>
-                        <th rowspan="2" style="vertical-align: middle;text-align: center;">资产名称</th>
-                        <th colspan="4">库存占有量</th>
-                        <th colspan="4">库存占有成本(当年)</th>
-                        <th colspan="4">库存占有成本(累计)</th>
-                        <th rowspan="2" style="vertical-align: middle;text-align: center;">保障水平</th>
-                        <th rowspan="2" style="vertical-align: middle;text-align: center;"></th>
-                    </tr>
-                    <tr>
-                        <th style="text-align: center;">购销</th>
-                        <th style="text-align: center;">租赁</th>
-                        <th style="text-align: center;">分享</th>
-                        <th style="text-align: center;">合计</th>
-                        <th style="text-align: center;">购销</th>
-                        <th style="text-align: center;">租赁</th>
-                        <th style="text-align: center;">分享</th>
-                        <th style="text-align: center;">当年合计</th>
-                        <th style="text-align: center;">购销</th>
-                        <th style="text-align: center;">租赁</th>
-                        <th style="text-align: center;">分享</th>
-                        <th style="text-align: center;">累计合计</th>
+                        <th style="vertical-align: middle;text-align: center;">资产编号</th>
+                        <th style="vertical-align: middle;text-align: center;">资产名称</th>
+                        <th style="vertical-align: middle;text-align: center;">占有类型</th>
+                        <th style="vertical-align: middle;text-align: center;">占有量</th>
+                        <th style="vertical-align: middle;text-align: center;">成本(当年)</th>
+                        <th style="vertical-align: middle;text-align: center;">成本(累计)</th>
+                        <th style="vertical-align: middle;text-align: center;">成本(原值)</th>
+                        <th style="vertical-align: middle;text-align: center;">保障水平</th>
+                        <th style="vertical-align: middle;text-align: center;"></th>
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach items="${assetsList}" var="asset" >
                         <tr>
-                            <td style="text-align: center;">${asset.assetsNo}</td>
-                            <td>${asset.assetsName}</td>
+                            <td rowspan="4" style="text-align: center;">${asset.assetsNo}</td>
+                            <td rowspan="4">${asset.assetsName}</td>
+                            <td style="text-align: center;">购销</td>
                             <td style="text-align: center;"><a href="${ctx}/quantity/detail/${asset.id}/1">${asset.purchaseSale}</a></td>
-                            <td style="text-align: center;"><a href="${ctx}/quantity/detail/${asset.id}/2">${asset.lease}</a></td>
-                            <td style="text-align: center;"><a href="${ctx}/quantity/detail/${asset.id}/3">${asset.share}</a></td>
-                            <td style="text-align: center;"><span class="label label-info">${asset.purchaseSale + asset.lease + asset.share}</span></td>
-                            <td style="text-align: right;"><a href="${ctx}/cost/detail/${asset.id}/1"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.purchaseCost}" ></fmt:formatNumber></a></td>
-                            <td style="text-align: right;"><a href="${ctx}/cost/detail/${asset.id}/2"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.leaseCost}" ></fmt:formatNumber></a></td>
-                            <td style="text-align: right;"><a href="${ctx}/cost/detail/${asset.id}/3"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.shareCost}" ></fmt:formatNumber></a></td>
-                            <td style="text-align: right;"><span class="label label-success"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.purchaseCost + asset.leaseCost + asset.shareCost}" ></fmt:formatNumber></span></td>
-                            <td style="text-align: right;"><a href="${ctx}/cost/detail/${asset.id}/1"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.purchaseCost}" ></fmt:formatNumber></a></td>
-                            <td style="text-align: right;"><a href="${ctx}/cost/detail/${asset.id}/2"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.leaseCost}" ></fmt:formatNumber></a></td>
-                            <td style="text-align: right;"><a href="${ctx}/cost/detail/${asset.id}/3"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.shareCost}" ></fmt:formatNumber></a></td>
-                            <td style="text-align: right;"><span class="label label-success"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.purchaseCost + asset.leaseCost + asset.shareCost}" ></fmt:formatNumber></span></td>
-                            <td style="text-align: right;">
+                            <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/1"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.purchaseCost}" ></fmt:formatNumber></a></td>
+                            <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/1"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.purchaseCost}" ></fmt:formatNumber></a></td>
+                            <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/1"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.purchaseCost}" ></fmt:formatNumber></a></td>
+                            <td rowspan="4" style="text-align: center;">
                                 <a href="javascript:;" onclick="settings('${asset.id}')">99.95%</a>
                                 <script type="text/javascript">
                                     function settings(assetsId){
@@ -242,9 +223,32 @@
                                     }
                                 </script>
                             </td>
-                            <td style="text-align: right;">
-                                <a href="${ctx}/securitylevel/result/${asset.id}" class="btn mini icn-only"><i class="icon-bar-chart"></i></a>
+                            <td rowspan="4" style="text-align: center;">
+                                <a href="${ctx}/trade/scheme/comparison/${asset.id}" class="btn mini blue">立即交易</a> <br />
+                                <a href="" class="btn mini green">加入方案</a> <br />
+                                <%--<a href="${ctx}/securitylevel/result/${asset.id}" class="btn mini icn-only"><i class="icon-bar-chart"></i></a>--%>
                             </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">租赁</td>
+                            <td style="text-align: center;"><a href="${ctx}/quantity/detail/${asset.id}/2">${asset.lease}</a></td>
+                            <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/2"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.leaseCost}" ></fmt:formatNumber></a></td>
+                            <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/2"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.leaseCost}" ></fmt:formatNumber></a></td>
+                            <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/2"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.leaseCost}" ></fmt:formatNumber></a></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">分享</td>
+                            <td style="text-align: center;"><a href="${ctx}/quantity/detail/${asset.id}/3">${asset.share}</a></td>
+                            <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/3"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.shareCost}" ></fmt:formatNumber></a></td>
+                            <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/3"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.shareCost}" ></fmt:formatNumber></a></td>
+                            <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/3"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.shareCost}" ></fmt:formatNumber></a></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center;">小计</td>
+                            <td style="text-align: center;"><span class="label label-info">${asset.purchaseSale + asset.lease + asset.share}</span></td>
+                            <td style="text-align: center;"><span class="label label-success"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.purchaseCost + asset.leaseCost + asset.shareCost}" ></fmt:formatNumber></span></td>
+                            <td style="text-align: center;"><span class="label label-success"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.purchaseCost + asset.leaseCost + asset.shareCost}" ></fmt:formatNumber></span></td>
+                            <td style="text-align: center;"><span class="label label-success"><fmt:formatNumber pattern="###,###,###,##0.00#" value=" ${asset.purchaseCost + asset.leaseCost + asset.shareCost}" ></fmt:formatNumber></span></td>
                         </tr>
                     </c:forEach>
                     </tbody>

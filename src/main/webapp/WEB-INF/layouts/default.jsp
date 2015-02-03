@@ -42,6 +42,20 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     <link href="${ctx}/static/css/fullcalendar.css" rel="stylesheet" type="text/css"/>
     <link href="${ctx}/static/css/jqvmap.css" rel="stylesheet" type="text/css" media="screen"/>
     <link href="${ctx}/static/css/jquery.easy-pie-chart.css" rel="stylesheet" type="text/css" media="screen"/>
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/bootstrap-fileupload.css" />
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/jquery.gritter.css" />
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/chosen.css" />
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/select2_metro.css" />
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/jquery.tagsinput.css" />
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/clockface.css" />
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/bootstrap-wysihtml5.css" />
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/datepicker.css" />
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/timepicker.css" />
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/colorpicker.css" />
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/bootstrap-toggle-buttons.css" />
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/daterangepicker.css" />
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/datetimepicker.css" />
+    <link rel="stylesheet" type="text/css" href="${ctx}/static/css/multi-select-metro.css" /
     <sitemesh:head/>
     <!-- END PAGE LEVEL STYLES -->
     <link rel="shortcut icon" href="${ctx}/static/image/favicon.ico"/>
@@ -60,6 +74,23 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
     <script src="${ctx}/static/js/jquery.cookie.min.js" type="text/javascript"></script>
     <script src="${ctx}/static/js/jquery.uniform.min.js" type="text/javascript"></script>
     <!-- END CORE PLUGINS -->
+    <script type="text/javascript" src="${ctx}/static/js/ckeditor.js"></script>
+    <script type="text/javascript" src="${ctx}/static/js/bootstrap-fileupload.js"></script>
+    <script type="text/javascript" src="${ctx}/static/js/chosen.jquery.min.js"></script>
+    <script type="text/javascript" src="${ctx}/static/js/select2.min.js"></script>
+    <script type="text/javascript" src="${ctx}/static/js/wysihtml5-0.3.0.js"></script>
+    <script type="text/javascript" src="${ctx}/static/js/bootstrap-wysihtml5.js"></script>
+    <script type="text/javascript" src="${ctx}/static/js/jquery.tagsinput.min.js"></script>
+    <script type="text/javascript" src="${ctx}/static/js/jquery.toggle.buttons.js"></script>
+
+
+    <script type="text/javascript" src="${ctx}/static/js/bootstrap-datepicker.js"></script>
+    <script type="text/javascript" src="${ctx}/static/js/bootstrap-datetimepicker.js"></script>
+    <script type="text/javascript" src="${ctx}/static/js/clockface.js"></script>
+    <script type="text/javascript" src="${ctx}/static/js/date.js"></script>
+    <script type="text/javascript" src="${ctx}/static//js/daterangepicker.js"></script>
+
+
 </head>
 <!-- END HEAD -->
 <!-- BEGIN BODY -->
