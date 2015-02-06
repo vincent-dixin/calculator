@@ -14,7 +14,12 @@ public class TradingSchemeControl {
 
     @RequestMapping("trade/scheme/comparison/{assetsId}")
     public String schemeComparison(@PathVariable String assetsId) {
-        return "trade/scheme-comparison";
+        return "trade/scheme-comparison-" + assetsId;
+    }
+
+    @RequestMapping("trade/scheme/comparison")
+    public String comparison() {
+        return "trade/comparison";
     }
 
 }
