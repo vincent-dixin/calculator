@@ -43,6 +43,9 @@ public class CalculatorControl {
 
     }
 
+
+
+
     @RequestMapping("assets/list")
     public String assetsList(Model model) {
         model.addAttribute("assetsList",assetsService.assetsList());

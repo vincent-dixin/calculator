@@ -224,8 +224,8 @@
                                 </script>
                             </td>
                             <td rowspan="4" style="text-align: center;">
-                                <a href="${ctx}/trade/scheme/comparison/${asset.id}" class="btn mini blue">立即交易</a> <br />
-                                <a href="" class="btn mini green">加入方案</a> <br />
+                                <a href="" class="btn mini blue">立即交易</a> <br />
+                                <a href="${ctx}/trade/scheme/comparison/${asset.id}" class="btn mini green">方案设置</a> <br />
                                 <%--<a href="${ctx}/securitylevel/result/${asset.id}" class="btn mini icn-only"><i class="icon-bar-chart"></i></a>--%>
                             </td>
                         </tr>

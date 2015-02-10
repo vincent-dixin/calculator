@@ -38,32 +38,31 @@
                 </tr>
                 </thead>
                 <tbody>
-                <c:forEach items="${assetsList}" var="asset" >
                   <tr>
                     <td rowspan="4" style="text-align: center;">1100002047</td>
                     <td rowspan="4">汽轮机主齿轮</td>
                     <td style="text-align: center;">购销</td>
-                    <td style="text-align: center;"><a href="${ctx}/quantity/detail/${asset.id}/1">2</a></td>
-                    <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/1"><fmt:formatNumber pattern="###,###,###,##0.00#" value="7606.80733333333" ></fmt:formatNumber></a></td>
-                    <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/1"><fmt:formatNumber pattern="###,###,###,##0.00#" value="57051.055" ></fmt:formatNumber></a></td>
-                    <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/1"><fmt:formatNumber pattern="###,###,###,##0.00#" value="834237.125" ></fmt:formatNumber></a></td>
+                    <td style="text-align: center;"><a href="">2</a></td>
+                    <td style="text-align: center;"><a href=""><fmt:formatNumber pattern="###,###,###,##0.00#" value="7606.80733333333" ></fmt:formatNumber></a></td>
+                    <td style="text-align: center;"><a href=""><fmt:formatNumber pattern="###,###,###,##0.00#" value="57051.055" ></fmt:formatNumber></a></td>
+                    <td style="text-align: center;"><a href=""><fmt:formatNumber pattern="###,###,###,##0.00#" value="834237.125" ></fmt:formatNumber></a></td>
                     <td rowspan="4" style="text-align: center;">
                       <a href="javascript:;">99.99%</a>
                     </td>
                   </tr>
                   <tr>
                     <td style="text-align: center;">租赁</td>
-                    <td style="text-align: center;"><a href="${ctx}/quantity/detail/${asset.id}/2">0</a></td>
-                    <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/2"><fmt:formatNumber pattern="###,###,###,##0.00#" value="" ></fmt:formatNumber></a></td>
-                    <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/2"><fmt:formatNumber pattern="###,###,###,##0.00#" value="" ></fmt:formatNumber></a></td>
-                    <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/2"><fmt:formatNumber pattern="###,###,###,##0.00#" value="0" ></fmt:formatNumber></a></td>
+                    <td style="text-align: center;"><a href="">0</a></td>
+                    <td style="text-align: center;"><a href=""><fmt:formatNumber pattern="###,###,###,##0.00#" value="0" ></fmt:formatNumber></a></td>
+                    <td style="text-align: center;"><a href=""><fmt:formatNumber pattern="###,###,###,##0.00#" value="0" ></fmt:formatNumber></a></td>
+                    <td style="text-align: center;"><a href=""><fmt:formatNumber pattern="###,###,###,##0.00#" value="0" ></fmt:formatNumber></a></td>
                   </tr>
                   <tr>
                     <td style="text-align: center;">分享</td>
-                    <td style="text-align: center;"><a href="${ctx}/quantity/detail/${asset.id}/3">1</a></td>
-                    <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/3"><fmt:formatNumber pattern="###,###,###,##0.00#" value="31025" ></fmt:formatNumber></a></td>
-                    <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/3"><fmt:formatNumber pattern="###,###,###,##0.00#" value="31025" ></fmt:formatNumber></a></td>
-                    <td style="text-align: center;"><a href="${ctx}/cost/detail/${asset.id}/3"><fmt:formatNumber pattern="###,###,###,##0.00#" value="0" ></fmt:formatNumber></a></td>
+                    <td style="text-align: center;"><a href="">1</a></td>
+                    <td style="text-align: center;"><a href=""><fmt:formatNumber pattern="###,###,###,##0.00#" value="31025" ></fmt:formatNumber></a></td>
+                    <td style="text-align: center;"><a href=""><fmt:formatNumber pattern="###,###,###,##0.00#" value="31025" ></fmt:formatNumber></a></td>
+                    <td style="text-align: center;"><a href=""><fmt:formatNumber pattern="###,###,###,##0.00#" value="0" ></fmt:formatNumber></a></td>
                   </tr>
                   <tr>
                     <td style="text-align: center;">小计</td>
@@ -72,12 +71,10 @@
                     <td style="text-align: center;"><span class="label label-success"><fmt:formatNumber pattern="###,###,###,##0.00#" value="88076" ></fmt:formatNumber></span></td>
                     <td style="text-align: center;"><span class="label label-success"><fmt:formatNumber pattern="###,###,###,##0.00#" value="834237" ></fmt:formatNumber></span></td>
                   </tr>
-                </c:forEach>
                 </tbody>
               </table>
             </div>
             <div class="span1">
-              <a class="btn green">加入对比</a>
             </div>
           </div>
         </div>

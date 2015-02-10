@@ -158,6 +158,14 @@ Purchase: http://themeforest.net/item/metronic-responsive-admin-dashboard-templa
                     <c:if test="${ctxUri eq '/assets/list'}"><span class="selected"></span></c:if>
                 </a>
             </li>
+
+            <li class="<c:if test="${ctxUri eq '/settings'}" >active</c:if>">
+                <a href="${ctx}/settings">
+                    <i class=" icon-cog"></i>
+                    <span class="title">参数设置</span>
+                    <c:if test="${ctxUri eq '/settings'}"><span class="selected"></span></c:if>
+                </a>
+            </li>
             <li class="<c:if test="${ctxUri eq '/cal'}" >active</c:if>">
                 <a href="${ctx}/cal">
                     <i class="icon-home"></i>
